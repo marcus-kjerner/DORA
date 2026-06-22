@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dora - Support</title>
+    <title>Dora - Söderköpings kommun</title>
     <style>
         :root {
-            /* Ditt valda blåa tema */
+            /* Det blåa temat */
             --primary-color: #0c4c84;
             --primary-hover: #083863;
             --bg-color: #f8f9fa;
             --text-color: #333;
+            --card-bg: #ffffff;
         }
 
         body {
@@ -33,6 +34,13 @@
         header h1 {
             margin: 0;
             font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+            opacity: 0.9;
         }
 
         .container {
@@ -45,12 +53,60 @@
             color: var(--primary-color);
             border-bottom: 2px solid var(--primary-color);
             padding-bottom: 0.5rem;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        /* --- Steg-för-steg lista --- */
+        ol.steps {
+            counter-reset: step-counter;
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ol.steps li {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1rem;
+            background: var(--card-bg);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            padding-right: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        ol.steps li::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: bold;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
         }
 
         /* --- Accordion (FAQ) --- */
         details {
-            background: white;
+            background: var(--card-bg);
             border-radius: 8px;
             margin-bottom: 1rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -65,13 +121,14 @@
             font-weight: 600;
             padding: 1.2rem;
             cursor: pointer;
-            list-style: none; /* Döljer standard-pilen */
+            list-style: none;
             position: relative;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            padding-right: 3rem;
         }
 
         summary::-webkit-details-marker {
-            display: none; /* Döljer pil i Safari */
+            display: none;
         }
 
         summary::after {
@@ -140,10 +197,10 @@
             background-color: var(--primary-hover);
         }
 
-        /* --- Länkar och Footer --- */
         a {
             color: var(--primary-color);
             text-decoration: none;
+            font-weight: 600;
         }
 
         a:hover {
@@ -162,48 +219,67 @@
 <body>
 
     <header>
-        <h1>Dora</h1>
-        <p>Support & Hjälpcenter</p>
+        <h1>DORA</h1>
+        <p>Device Operations and Registration Application</p>
     </header>
 
     <div class="container">
         
+        <div class="info-card">
+            <strong>Vad är DORA?</strong><br>
+            DORA är ett internt verktyg för IT-avdelningen i Söderköpings kommun. Appen förenklar inventariehanteringen genom att låta personal utföra vanliga administrativa åtgärder direkt på plats via mobilen. Genom att scanna en enhets stöld-ID kopplar appen upp sig mot Easit GO och tillåter användaren att skrota utrustning, flytta enheter till IT-lager eller registrera ett ägarbyte med bara några tryck.
+        </div>
+
+        <h2>Hur appen används</h2>
+        <ol class="steps">
+            <li><strong>Logga in:</strong> Öppna appen och identifiera dig med FaceID eller fingeravtryck.</li>
+            <li><strong>Välj åtgärd:</strong> Välj om du vill Skrota, flytta till IT-Lager eller Flytta inventarie (ägarbyte).</li>
+            <li><strong>Scanna:</strong> Rikta kameran mot enhetens stöld-ID.</li>
+            <li><strong>Bekräfta:</strong> Kontrollera att informationen som visas (Modell, nuvarande Ägare etc.) stämmer.</li>
+            <li><strong>Utför:</strong> Vid flytt väljer du ny användare och byggnad/rum i rullistorna. Tryck sedan på bekräfta för att uppdatera Easit i realtid.</li>
+        </ol>
+
         <h2>Vanliga frågor (FAQ)</h2>
         
-        <!-- FAQ 1 -->
         <details>
-            <summary>Hur skapar jag ett konto i Dora?</summary>
+            <summary>Vad gör jag om en streckkod är skadad och inte kan scannas?</summary>
             <div class="faq-content">
-                <p>Ersätt denna text med dina instruktioner. Till exempel: Ladda ner appen, klicka på "Skapa konto" och följ instruktionerna på skärmen.</p>
+                <p>Om kameran inte kan läsa av streckkoden kan du klicka på tangentbordsikonen i det övre högra hörnet på scannerskärmen. Där kan du skriva in enhetens stöld-ID (6 siffror) manuellt för att hämta informationen från Easit.</p>
             </div>
         </details>
 
-        <!-- FAQ 2 -->
         <details>
-            <summary>Hur raderar jag mitt konto och min data?</summary>
+            <summary>Varför kräver appen fingeravtryck eller ansiktsigenkänning vid start?</summary>
             <div class="faq-content">
-                <p><strong>Viktigt för App Store:</strong> Apple kräver att det finns ett enkelt sätt att radera kontot. Beskriv hur man gör detta inuti appen (t.ex. Inställningar > Radera konto) eller be dem skicka ett e-postmeddelande via formuläret nedan för att begära radering av data.</p>
+                <p>För att skydda kommunens data och säkerställa att din personliga API-nyckel inte missbrukas kräver DORA biometrisk autentisering. Detta säkerställer att endast behörig personal kan utföra ändringar i inventariesystemet om telefonen skulle hamna i orätta händer.</p>
             </div>
         </details>
 
-        <!-- FAQ 3 -->
         <details>
-            <summary>Jag har glömt mitt lösenord, hur gör jag?</summary>
+            <summary>Hur vet jag att en flytt eller skrotning faktiskt har genomförts i Easit?</summary>
             <div class="faq-content">
-                <p>Klicka på "Glömt lösenord" på inloggningsskärmen och ange din e-postadress, så skickar vi en återställningslänk till dig.</p>
+                <p>När du bekräftar en åtgärd skickar appen ett direktanrop till Easit. Om allt går bra visas ett grönt meddelande: "✔ Uppdatering lyckades!". Dessutom läggs enheten till i historiklistan längst ner på skärmen under din nuvarande session, så att du enkelt kan dubbelkolla vad du nyss har gjort.</p>
             </div>
         </details>
 
+        <details>
+            <summary>Krävs VPN för att använda appen utanför kommunhuset?</summary>
+            <div class="faq-content">
+                <p>Ja, eftersom appen kommunicerar direkt med kommunens interna integrations-API för Easit, måste din tjänstetelefon ha en aktiv anslutning till kommunens nätverk (antingen via WiFi på plats eller via Always-on VPN) för att kunna hämta och skicka data.</p>
+            </div>
+        </details>
 
-        <h2>Kontakta Supporten</h2>
-        <p>Hittade du inte svaret på din fråga? Fyll i formuläret nedan så hjälper vi dig så snabbt vi kan.</p>
+        <!-- Detta är extra viktigt för att klara App Stores granskning -->
+        <details>
+            <summary>Hur hanterar jag min kontodata och åtkomst?</summary>
+            <div class="faq-content">
+                <p>Eftersom DORA är en intern företagsapp knuten till Söderköpings kommuns system, hanteras din behörighet via kommunens IT-avdelning. Om du vill återkalla din åtkomst, ta bort din personliga API-nyckel eller avsluta ditt konto, vänligen kontakta den interna IT-supporten direkt eller via formuläret nedan.</p>
+            </div>
+        </details>
+
+        <h2>IT-Support Söderköping</h2>
+        <p>Upplever du problem med appen eller behöver du hjälp med behörigheter? Använd formuläret nedan för att skapa ett ärende.</p>
         
-        <!-- 
-          TIPS FÖR GITHUB PAGES: 
-          Eftersom GitHub Pages inte kan köra backend-kod (som PHP) för att skicka mail, 
-          kan du skapa ett gratis konto på t.ex. Formspree (https://formspree.io/).
-          Byt ut webbadressen i 'action' mot den du får från Formspree. 
-        -->
         <form action="https://formspree.io/f/xjgqvkaa" method="POST">
             <div class="form-group">
                 <label for="name">Namn</label>
@@ -212,24 +288,24 @@
             
             <div class="form-group">
                 <label for="email">E-postadress</label>
-                <input type="email" id="email" name="email" required placeholder="din.epost@exempel.se">
+                <input type="email" id="email" name="email" required placeholder="namn.efternamn@soderkoping.se">
             </div>
             
             <div class="form-group">
-                <label for="message">Ditt meddelande</label>
-                <textarea id="message" name="message" rows="6" required placeholder="Beskriv ditt problem eller din fråga här..."></textarea>
+                <label for="message">Felbeskrivning / Ärende</label>
+                <textarea id="message" name="message" rows="6" required placeholder="Beskriv problemet här..."></textarea>
             </div>
             
-            <button type="submit">Skicka meddelande</button>
+            <button type="submit">Skicka ärende</button>
         </form>
 
-        <h2>Integritetspolicy (Privacy Policy)</h2>
-        <p>App Store kräver att du länkar till din integritetspolicy. Du kan läsa om hur Dora hanterar din data i vår <a href="LÄNK_TILL_DIN_PRIVACY_POLICY">Integritetspolicy</a>.</p>
+        <h2>Integritetspolicy</h2>
+        <p>Information om hur Söderköpings kommun hanterar personuppgifter och data inom ramen för interna IT-system hittar du i vår <a href="https://www.soderkoping.se/kommun-politik/om-kommunen/Personuppgiftshantering/">Integritetspolicy för anställda</a>.</p>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 Dora App. Alla rättigheter förbehållna.</p>
+        <p>&copy; 2026 Söderköpings kommun.</p>
     </footer>
 
 </body>
